@@ -9,7 +9,7 @@ public class PlayerGridMovement : MonoBehaviour
     private Animator animator;
     [SerializeField] private float speed = 1;
     public Transform movePoint;
-    //[SerializeField] private float axis = 0;
+    public LayerMask obstacles;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +33,7 @@ public class PlayerGridMovement : MonoBehaviour
         if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
         {
             //set animation parameter
+            
             animator.SetBool("IsWalking", Input.GetAxisRaw("Horizontal") != 0f || Input.GetAxisRaw("Vertical") != 0f);
             animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
             animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
@@ -40,15 +41,21 @@ public class PlayerGridMovement : MonoBehaviour
             //if vertical inputs are put
             if (math.abs(Input.GetAxisRaw("Vertical")) == 1)
             {
-                //change child's position
-                movePoint.position += new Vector3(0, Input.GetAxisRaw("Vertical"), 0);
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, obstacles))
+                {
+                    //change child's position
+                    movePoint.position += new Vector3(0, Input.GetAxisRaw("Vertical"), 0);
+                }
             }
 
             //if horizontal inputs are put
             if (math.abs(Input.GetAxisRaw("Horizontal")) == 1)
             {
-                //change child's position
-                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, obstacles))
+                {
+                    //change child's position
+                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
+                }
             }
         }
     }
