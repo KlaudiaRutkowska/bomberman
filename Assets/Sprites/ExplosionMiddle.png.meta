@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 03b90183c9fc50a4aa4e892ff6d77847
+guid: 16bedf19616a97e409993f89428fec4b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bomb_0
+      name: ExplosionMiddle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a42a7183e7bd84149a87465023adeb64
-      internalID: -1949971117
+      spriteID: 24d4a304cbce77e4dbaa9c13f382033f
+      internalID: -371883448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_1
+      name: ExplosionMiddle_1
       rect:
         serializedVersion: 2
         x: 16
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a158ad247e4bea34f8bfe16f6214870b
-      internalID: 1602274048
+      spriteID: 328223794c772cb47ab7000852162455
+      internalID: -1134435163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_2
+      name: ExplosionMiddle_2
       rect:
         serializedVersion: 2
         x: 32
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 823765ca3c3746d49b39823e9ac6125a
-      internalID: -754116265
+      spriteID: 6569dfc56e15faa49a5114fe9a54e6e4
+      internalID: -1839597036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_3
+      name: ExplosionMiddle_3
       rect:
         serializedVersion: 2
         x: 48
@@ -184,8 +184,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9742168b675163d4d8fe75a9c00603a3
-      internalID: 895417982
+      spriteID: 2dd71d593e490864c8e1c1eebfec87cb
+      internalID: 1043654942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExplosionMiddle_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60df8bbeb5cf69b40bc41497a16176ed
+      internalID: 2127135543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExplosionMiddle_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92fbd7dcaedacc14486c9a79055f5392
+      internalID: -1755995941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExplosionMiddle_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 866a8b5c90c090a46964f2799b5af702
+      internalID: 1376867238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExplosionMiddle_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a1935f19857e147b817ee7f6542217
+      internalID: -691366277
       vertices: []
       indices: 
       edges: []
@@ -201,10 +285,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bomb_0: -1949971117
-      Bomb_1: 1602274048
-      Bomb_2: -754116265
-      Bomb_3: 895417982
+      ExplosionMiddle_3: 1043654942
+      ExplosionMiddle_1: -1134435163
+      ExplosionMiddle_0: -371883448
+      ExplosionMiddle_7: -691366277
+      ExplosionMiddle_2: -1839597036
+      ExplosionMiddle_6: 1376867238
+      ExplosionMiddle_5: -1755995941
+      ExplosionMiddle_4: 2127135543
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

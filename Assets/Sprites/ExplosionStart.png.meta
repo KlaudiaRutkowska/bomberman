@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 03b90183c9fc50a4aa4e892ff6d77847
+guid: f66bec551385ee442b0987c1a390c772
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bomb_0
+      name: ExplosionStart_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a42a7183e7bd84149a87465023adeb64
-      internalID: -1949971117
+      spriteID: 5898b691c9b0a574189a17530c64015e
+      internalID: -630061288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_1
+      name: ExplosionStart_1
       rect:
         serializedVersion: 2
         x: 16
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a158ad247e4bea34f8bfe16f6214870b
-      internalID: 1602274048
+      spriteID: f3e1c1126df2a714f8182b77ba6b72ee
+      internalID: 2014904061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_2
+      name: ExplosionStart_2
       rect:
         serializedVersion: 2
         x: 32
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 823765ca3c3746d49b39823e9ac6125a
-      internalID: -754116265
+      spriteID: 78c46b4136e6bf240be36381287ec8c8
+      internalID: 162148298
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bomb_3
+      name: ExplosionStart_3
       rect:
         serializedVersion: 2
         x: 48
@@ -184,8 +184,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9742168b675163d4d8fe75a9c00603a3
-      internalID: 895417982
+      spriteID: 3c591f269bc07424ab0492f30785451a
+      internalID: 1778725308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExplosionStart_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcb9ed05ae6110d43ad42e9abe78f56e
+      internalID: -1883973483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExplosionStart_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82c5a53df7e092c46a5ec40fa77ddb80
+      internalID: -329740877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExplosionStart_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3adbac1635f46494c9e2eb43449adceb
+      internalID: -621051012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExplosionStart_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e1a0287f8faa18409e5f40f03d618df
+      internalID: 428640552
       vertices: []
       indices: 
       edges: []
@@ -201,10 +285,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bomb_0: -1949971117
-      Bomb_1: 1602274048
-      Bomb_2: -754116265
-      Bomb_3: 895417982
+      ExplosionStart_1: 2014904061
+      ExplosionStart_3: 1778725308
+      ExplosionStart_7: 428640552
+      ExplosionStart_4: -1883973483
+      ExplosionStart_5: -329740877
+      ExplosionStart_6: -621051012
+      ExplosionStart_2: 162148298
+      ExplosionStart_0: -630061288
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
