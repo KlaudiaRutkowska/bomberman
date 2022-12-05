@@ -33,7 +33,6 @@ public class PlayerGridMovement : MonoBehaviour
         if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
         {
             //set animation parameter
-            
             animator.SetBool("IsWalking", Input.GetAxisRaw("Horizontal") != 0f || Input.GetAxisRaw("Vertical") != 0f);
             animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
             animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
@@ -55,8 +54,8 @@ public class PlayerGridMovement : MonoBehaviour
             if (math.abs(Input.GetAxisRaw("Horizontal")) == 1)
             {
                 if (
-                    !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, obstacles) &&
-                    !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, bombs)
+                        !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, obstacles) &&
+                        !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, bombs)
                     )
                 {
                     //change child's position

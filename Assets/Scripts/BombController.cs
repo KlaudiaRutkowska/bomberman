@@ -14,6 +14,7 @@ public class BombController : MonoBehaviour
 
     [Header("Explosion")]
     public Explosion explosionPrefab;
+    public LayerMask explosionLayerMask;
     public float explosionDuration = 1f;
     public int explosionSize = 1;
 
@@ -51,7 +52,7 @@ public class BombController : MonoBehaviour
 
         //wait for bomb to fuse for specific amount of seconds
         yield return new WaitForSeconds(bombFuseTime);
-
+        
         Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
 
         Destroy(explosion.gameObject, explosionDuration);
@@ -60,17 +61,34 @@ public class BombController : MonoBehaviour
         Explode(position, Vector2.down, explosionSize);
         Explode(position, Vector2.left, explosionSize);
         Explode(position, Vector2.right, explosionSize);
-
+        
         Destroy(bomb);
         //after that bom can be put again
         bombsRemaining++;
     }
-
+    
     private void Explode(Vector2 position, Vector2 direction, int length)
     {
         if (length <= 0)
         {
             return;
         }
+
+        position += direction;
+
+        if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, explosionLayerMask))
+        {
+            //ClearDestructible(position);
+            return;
+        }
+
+        Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+        explosion.setActiveAnimation(length > 1 ? "middle" : "end");
+        explosion.SetDirection(direction);
+        explosion.DestroyAfter(explosionDuration);
+
+        Explode(position, direction, length - 1);
     }
+
+
 }
