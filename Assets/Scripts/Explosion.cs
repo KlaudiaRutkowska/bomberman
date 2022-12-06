@@ -22,7 +22,10 @@ public class Explosion : MonoBehaviour
 
     public void SetDirection(Vector2 direction)
     {
+        //atan2 function returnsangle in radians
         float angle = Mathf.Atan2(direction.y, direction.x);
+        //calculate rotation and rotate in z axis
+        //angleAxis functions requires angle in degrees so it must be changed by * rad2deg
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
     }
 

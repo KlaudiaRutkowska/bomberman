@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using TMPro;
 using UnityEngine;
 
 public class BombController : MonoBehaviour
@@ -53,10 +54,20 @@ public class BombController : MonoBehaviour
         //wait for bomb to fuse for specific amount of seconds
         yield return new WaitForSeconds(bombFuseTime);
         
+        //create explosion instance (with type Explosion which is class)
+        //which contains explosion prefab created in unity,
+        //position, which is basicly player position rounded (line 45, 46)
+
+        //this is explosion with "start" animation because beside of current position
+        //we don't need explosion size. "start" animation is always inside,
+        //and "start" animation is set as default in animator.
         Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
 
+        //destroy explosion after specific amount of time saved in variable explosionDuration
         Destroy(explosion.gameObject, explosionDuration);
 
+        //cal method Explode with parameters: current position,
+        //direction (in which side flip explosion tiles), explosion size 
         Explode(position, Vector2.up, explosionSize);
         Explode(position, Vector2.down, explosionSize);
         Explode(position, Vector2.left, explosionSize);
@@ -66,9 +77,11 @@ public class BombController : MonoBehaviour
         //after that bom can be put again
         bombsRemaining++;
     }
-    
+
+    //recursive method
     private void Explode(Vector2 position, Vector2 direction, int length)
     {
+        //exit condition
         if (length <= 0)
         {
             return;
@@ -78,17 +91,19 @@ public class BombController : MonoBehaviour
 
         if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, explosionLayerMask))
         {
-            //ClearDestructible(position);
             return;
         }
 
+        //create instance explosion with current position 
+        //(which is changed in line 89)
         Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+        //using method from Explosion class we check if length of explosion is grater
+        //than 1 or not and depending on it set "middle" or "end" explosion animation 
         explosion.setActiveAnimation(length > 1 ? "middle" : "end");
         explosion.SetDirection(direction);
         explosion.DestroyAfter(explosionDuration);
 
+        //call again method with reduced length by 1
         Explode(position, direction, length - 1);
     }
-
-
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerGridMovement : MonoBehaviour
 {
     private Animator animator;
-    public LayerMask obstacles, bombs;
+    public LayerMask obstacles, destructible, undestructible, bombs;
     [SerializeField] private float speed = 1;
     public Transform movePoint;
 
@@ -41,7 +41,8 @@ public class PlayerGridMovement : MonoBehaviour
             if (math.abs(Input.GetAxisRaw("Vertical")) == 1)
             {
                 if (
-                        !Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, obstacles) && 
+                        !Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, destructible) &&
+                        !Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, undestructible) &&
                         !Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, bombs)
                     )
                 {
@@ -54,7 +55,8 @@ public class PlayerGridMovement : MonoBehaviour
             if (math.abs(Input.GetAxisRaw("Horizontal")) == 1)
             {
                 if (
-                        !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, obstacles) &&
+                        !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, destructible) &&
+                        !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, undestructible) &&
                         !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, bombs)
                     )
                 {
