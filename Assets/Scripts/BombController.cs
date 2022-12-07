@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class BombController : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class BombController : MonoBehaviour
     public LayerMask explosionLayerMask;
     public float explosionDuration = 1f;
     public int explosionSize = 1;
+
+    public Tilemap destructibleTileMaps;
 
     private void OnEnable()
     {
@@ -101,9 +104,23 @@ public class BombController : MonoBehaviour
         //than 1 or not and depending on it set "middle" or "end" explosion animation 
         explosion.setActiveAnimation(length > 1 ? "middle" : "end");
         explosion.SetDirection(direction);
+
+        DestroyDestructibleTileMap(position);
+
         explosion.DestroyAfter(explosionDuration);
 
         //call again method with reduced length by 1
         Explode(position, direction, length - 1);
+    }
+
+    private void DestroyDestructibleTileMap(Vector2 position)
+    {
+        Vector3Int cell = destructibleTileMaps.WorldToCell(position);
+        TileBase tile = destructibleTileMaps.GetTile(cell);
+
+        if (tile != null)
+        {
+            destructibleTileMaps.SetTile(cell, null);
+        }
     }
 }

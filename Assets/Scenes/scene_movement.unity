@@ -1699,6 +1699,7 @@ MonoBehaviour:
     m_Bits: 640
   explosionDuration: 1
   explosionSize: 2
+  destructibleTileMaps: {fileID: 873427038}
 --- !u!1 &1220869022
 GameObject:
   m_ObjectHideFlags: 0
