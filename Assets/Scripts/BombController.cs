@@ -43,15 +43,15 @@ public class BombController : MonoBehaviour
     private IEnumerator PlaceBomb()
     {
         //save to new variable position from player
-        Vector2 position = transform.position;
+        Vector2 bombPosition = transform.position;
 
         //round coordinates x, y so bomb is put on whole positions
-        position.x = Mathf.Round(position.x);
-        position.y = Mathf.Round(position.y);
+        bombPosition.x = Mathf.Round(bombPosition.x);
+        bombPosition.y = Mathf.Round(bombPosition.y);
 
         //create instance of bomb with bomb prefab and rounded position
         //so bomb can appear there
-        GameObject bomb = Instantiate(bombPrefab, position, Quaternion.identity);
+        GameObject bomb = Instantiate(bombPrefab, bombPosition, Quaternion.identity);
         bombsRemaining--;
 
         //wait for bomb to fuse for specific amount of seconds
@@ -64,17 +64,19 @@ public class BombController : MonoBehaviour
         //this is explosion with "start" animation because beside of current position
         //we don't need explosion size. "start" animation is always inside,
         //and "start" animation is set as default in animator.
-        Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+        Explosion explosion = Instantiate(explosionPrefab, bombPosition, Quaternion.identity);
+
+        checkPlayerToKill(bombPosition);
 
         //destroy explosion after specific amount of time saved in variable explosionDuration
         Destroy(explosion.gameObject, explosionDuration);
 
         //cal method Explode with parameters: current position,
         //direction (in which side flip explosion tiles), explosion size 
-        Explode(position, Vector2.up, explosionSize);
-        Explode(position, Vector2.down, explosionSize);
-        Explode(position, Vector2.left, explosionSize);
-        Explode(position, Vector2.right, explosionSize);
+        Explode(bombPosition, Vector2.up, explosionSize);
+        Explode(bombPosition, Vector2.down, explosionSize);
+        Explode(bombPosition, Vector2.left, explosionSize);
+        Explode(bombPosition, Vector2.right, explosionSize);
         
         Destroy(bomb);
         //after that bom can be put again
@@ -82,7 +84,7 @@ public class BombController : MonoBehaviour
     }
 
     //recursive method
-    private void Explode(Vector2 position, Vector2 direction, int length)
+    private void Explode(Vector2 explosionPosition, Vector2 direction, int length)
     {
         //exit condition
         if (length <= 0)
@@ -90,27 +92,29 @@ public class BombController : MonoBehaviour
             return;
         }
 
-        position += direction;
+        explosionPosition += direction;
 
-        if (Physics2D.OverlapBox(position, Vector2.one / 2f, 0f, explosionLayerMask))
+        if (Physics2D.OverlapBox(explosionPosition, Vector2.one / 2f, 0f, explosionLayerMask))
         {
             return;
         }
 
+        checkPlayerToKill(explosionPosition);
+
         //create instance explosion with current position 
         //(which is changed in line 89)
-        Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+        Explosion explosion = Instantiate(explosionPrefab, explosionPosition, Quaternion.identity);
         //using method from Explosion class we check if length of explosion is grater
         //than 1 or not and depending on it set "middle" or "end" explosion animation 
         explosion.setActiveAnimation(length > 1 ? "middle" : "end");
         explosion.SetDirection(direction);
 
-        DestroyDestructibleTileMap(position);
+        DestroyDestructibleTileMap(explosionPosition);
 
         explosion.DestroyAfter(explosionDuration);
 
         //call again method with reduced length by 1
-        Explode(position, direction, length - 1);
+        Explode(explosionPosition, direction, length - 1);
     }
 
     private void DestroyDestructibleTileMap(Vector2 position)
@@ -121,6 +125,16 @@ public class BombController : MonoBehaviour
         if (tile != null)
         {
             destructibleTileMaps.SetTile(cell, null);
+        }
+    }
+
+    public void checkPlayerToKill(Vector2 position)
+    {
+        Vector2 playerPosition = new Vector2(Mathf.FloorToInt(transform.position.x), Mathf.FloorToInt(transform.position.y));
+
+        if (position == playerPosition)
+        {
+            GetComponent<DeathController>().Kill();
         }
     }
 }

@@ -1510,7 +1510,8 @@ GameObject:
   - component: {fileID: 881379171}
   - component: {fileID: 881379170}
   - component: {fileID: 881379176}
-  m_Layer: 0
+  - component: {fileID: 881379177}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1541,6 +1542,9 @@ MonoBehaviour:
   bombs:
     serializedVersion: 2
     m_Bits: 8
+  explosion:
+    serializedVersion: 2
+    m_Bits: 128
   speed: 1
   movePoint: {fileID: 440454731}
 --- !u!95 &881379171
@@ -1690,6 +1694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a371597ae0cf6a4798dffea1e193790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 881379169}
   bombPrefab: {fileID: 4394325989030982557, guid: 4bb2a8d7808c7ac4f823e1b92265c4a7, type: 3}
   bombFuseTime: 5
   bombAmount: 1
@@ -1700,6 +1705,19 @@ MonoBehaviour:
   explosionDuration: 1
   explosionSize: 2
   destructibleTileMaps: {fileID: 873427038}
+--- !u!114 &881379177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881379169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b3dfbd5a941f82419362fb152a88316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killed: 0
 --- !u!1 &1220869022
 GameObject:
   m_ObjectHideFlags: 0
