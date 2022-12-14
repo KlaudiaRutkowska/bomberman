@@ -26,6 +26,7 @@ public class PlayerGridMovement : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
+		//if player is't killed play the game
 		if (!GetComponent<DeathController>().killed)
 		{
 			//make player go towards child's position
@@ -68,18 +69,16 @@ public class PlayerGridMovement : MonoBehaviour
 				}
 			}
 
-            if (Vector3.Distance(transform.position, movePoint.position) == 0f)
+			//if distance between player position and move point position is grater or equal to zero
+			//equal because if we put the bomb and we stay in the place where will be explosion,
+			//there distance between player and move point  will be 0
+			//grater because ?
+            if (Vector3.Distance(transform.position, movePoint.position) >= 0f)
             {
-                if (Physics2D.OverlapCircle(movePoint.position, .2f, explosion))
-                {
-                    GetComponent<DeathController>().Kill();
-                }
-            }
-
-            if (Vector3.Distance(transform.position, movePoint.position) > 0f)
-            {
+				//if between player and explosion distance will be equal or less than 2f,
                 if (Physics2D.OverlapCircle(transform.position, .2f, explosion))
                 {
+					//then player dies
                     GetComponent<DeathController>().Kill();
                 }
             }

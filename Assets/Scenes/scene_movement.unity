@@ -1694,14 +1694,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a371597ae0cf6a4798dffea1e193790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 881379169}
   bombPrefab: {fileID: 4394325989030982557, guid: 4bb2a8d7808c7ac4f823e1b92265c4a7, type: 3}
   bombFuseTime: 5
-  bombAmount: 1
+  bombAmount: 2
   explosionPrefab: {fileID: 1011691832393916416, guid: dcac3084c402bbf4eb432c9fb063bf98, type: 3}
   explosionLayerMask:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 896
   explosionDuration: 1
   explosionSize: 2
   destructibleTileMaps: {fileID: 873427038}
