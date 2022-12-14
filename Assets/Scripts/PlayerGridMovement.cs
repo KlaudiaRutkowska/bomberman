@@ -7,9 +7,10 @@ using UnityEngine;
 public class PlayerGridMovement : MonoBehaviour
 {
 	private Animator animator;
-	public LayerMask obstacles, destructible, undestructible, bombs, explosion;
-	[SerializeField] private float speed = 1;
+	public LayerMask destructible, undestructible, bombs, explosion;
 	public Transform movePoint;
+
+	[SerializeField] private float speed = 1;
 
 	// Start is called before the first frame update
 	void Start()
