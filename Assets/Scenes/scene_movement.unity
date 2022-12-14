@@ -369,7 +369,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229575980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: -5, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -402,6 +402,9 @@ MonoBehaviour:
   explosion:
     serializedVersion: 2
     m_Bits: 128
+  player:
+    serializedVersion: 2
+    m_Bits: 1024
   speed: 1
   delay: 1
 --- !u!1 &440454730
@@ -1823,6 +1826,9 @@ MonoBehaviour:
   explosion:
     serializedVersion: 2
     m_Bits: 128
+  enemies:
+    serializedVersion: 2
+    m_Bits: 2048
   movePoint: {fileID: 440454731}
   speed: 1
 --- !u!95 &881379171

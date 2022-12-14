@@ -8,10 +8,12 @@ public class EnemyMovement : MonoBehaviour
 {
     private Animator animator;
     public Transform movePoint;
-    public LayerMask destructible, undestructible, bombs, explosion;
+    public LayerMask destructible, undestructible, bombs, explosion, player;
 
+    private Vector3 position;
     public float speed = 1;
-    public float delay = 1f;
+    public float delay = .5f;
+    private float currentRunTime = 0.0f;
 
     void Start()
     {
@@ -32,45 +34,29 @@ public class EnemyMovement : MonoBehaviour
             //make player go towards child's position
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
 
-            //if distance between parent and child is 0
-            if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
+
+            currentRunTime += Time.deltaTime;
+
+            if (currentRunTime >= delay)
             {
-                //set animation parameter
-                animator.SetBool("IsWalking", Input.GetAxisRaw("Horizontal") != 0f || Input.GetAxisRaw("Vertical") != 0f);
-                animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
-                animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
-
-                generateRandomPosition();
-
-                /*
-                //if vertical inputs are put
-                if (math.abs(Input.GetAxisRaw("Vertical")) == 1)
+                //if distance between parent and child is 0
+                if (Vector3.Distance(transform.position, movePoint.position) <= .05f)
                 {
+                    generateRandomPosition();
+
                     if (
-                            !Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, destructible) &&
-                            !Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, undestructible) &&
-                            !Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, bombs)
+                            !Physics2D.OverlapCircle(movePoint.position + position, .2f, destructible) &&
+                            !Physics2D.OverlapCircle(movePoint.position + position, .2f, undestructible) &&
+                            !Physics2D.OverlapCircle(movePoint.position + position, .2f, bombs) &&
+                            !Physics2D.OverlapCircle(movePoint.position + position, .2f, player) &&
+                            position != (movePoint.position - position)
                         )
                     {
                         //change child's position
-                        movePoint.position += new Vector3(0, Input.GetAxisRaw("Vertical"), 0);
+                        movePoint.position += position;
                     }
                 }
-
-                //if horizontal inputs are put
-                if (math.abs(Input.GetAxisRaw("Horizontal")) == 1)
-                {
-                    if (
-                            !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, destructible) &&
-                            !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, undestructible) &&
-                            !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, bombs)
-                        )
-                    {
-                        //change child's position
-                        movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
-                    }
-                }
-                */
+                currentRunTime = 0f;
             }
 
             //if distance between player position and move point position is grater or equal to zero
@@ -91,14 +77,13 @@ public class EnemyMovement : MonoBehaviour
 
     void generateRandomPosition()
     {
-        Vector2 position = new Vector2(transform.position.x, transform.position.y);
-
         position.x = Random.Range(-1, 2);
         position.y = Random.Range(-1, 2);
-
+        Debug.Log(position);
+        /*
         if (position.x == 0f)
         {
-            position.y = Random.Range(-1, 2);
+            position.y = Random.Range(-2, 2);
         }
         else
         {
@@ -108,11 +93,11 @@ public class EnemyMovement : MonoBehaviour
 
         if (position.y == 0f)
         {
-            position.x = Random.Range(-1, 2);
+            position.x = Random.Range(-2, 2);
         }
         else
         {
             position.x = 0f;
-        }
+        }*/
     }
 }

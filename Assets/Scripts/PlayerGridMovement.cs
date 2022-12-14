@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerGridMovement : MonoBehaviour
 {
 	private Animator animator;
-	public LayerMask destructible, undestructible, bombs, explosion;
+	public LayerMask destructible, undestructible, bombs, explosion, enemies;
 	public Transform movePoint;
 
 	[SerializeField] private float speed = 1;
@@ -47,8 +47,9 @@ public class PlayerGridMovement : MonoBehaviour
 					if (
 							!Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, destructible) &&
 							!Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, undestructible) &&
-							!Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, bombs)
-						)
+							!Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, bombs) &&
+                            !Physics2D.OverlapCircle(movePoint.position + new Vector3(0, Input.GetAxisRaw("Vertical"), 0), .2f, enemies)
+                        )
 					{
 						//change child's position
 						movePoint.position += new Vector3(0, Input.GetAxisRaw("Vertical"), 0);
@@ -61,8 +62,9 @@ public class PlayerGridMovement : MonoBehaviour
 					if (
 							!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, destructible) &&
 							!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, undestructible) &&
-							!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, bombs)
-						)
+							!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, bombs) &&
+                            !Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, enemies)
+                        )
 					{
 						//change child's position
 						movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
