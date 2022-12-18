@@ -1980,12 +1980,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 4394325989030982557, guid: 4bb2a8d7808c7ac4f823e1b92265c4a7, type: 3}
   bombFuseTime: 5
-  bombAmount: 2
+  bombAmount: 1
   explosionPrefab: {fileID: 1011691832393916416, guid: dcac3084c402bbf4eb432c9fb063bf98, type: 3}
   explosionLayerMask:
     serializedVersion: 2
     m_Bits: 896
-  explosionDuration: 1
+  explosionDuration: 2
   explosionSize: 2
   destructibleTileMaps: {fileID: 873427038}
 --- !u!114 &881379177

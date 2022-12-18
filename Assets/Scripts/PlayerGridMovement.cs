@@ -82,7 +82,7 @@ public class PlayerGridMovement : MonoBehaviour
                 if (Physics2D.OverlapCircle(transform.position, .2f, explosion))
                 {
 					//then player dies
-                    GetComponent<DeathController>().Kill();
+                    GetComponent<DeathController>().KillPlayer();
                 }
             }
         }

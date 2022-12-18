@@ -145,7 +145,7 @@ public class BombController : MonoBehaviour
 
 		if (position == playerPosition)
 		{
-			GetComponent<DeathController>().Kill();
+			GetComponent<DeathController>().KillPlayer();
 		}
 	}
 }

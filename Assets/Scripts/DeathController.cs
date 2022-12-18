@@ -15,10 +15,16 @@ public class DeathController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Kill()
+    public void KillPlayer()
     {
         killed = true;
         GetComponent<BombController>().enabled = false;
+        animator.SetBool("Dead", true);
+    }
+
+    public void KillEnemy()
+    {
+        killed = true;
         animator.SetBool("Dead", true);
     }
 }
