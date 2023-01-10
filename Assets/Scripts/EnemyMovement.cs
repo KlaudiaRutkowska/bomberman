@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private Animator animator;
     public Transform movePoint;
     public LayerMask destructible, undestructible, bombs, explosion, player;
 
@@ -20,20 +19,14 @@ public class EnemyMovement : MonoBehaviour
         movePoint.parent = null;
     }
 
-    private void Awake()
-    {
-        //grab reference for animation from gameproject
-        animator = GetComponent<Animator>();
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (!GetComponent<DeathController>().killed)
+        //if enemy is not killed AND not attacking he can move
+        if (!GetComponent<DeathController>().killed && !GetComponent<EnemyAttack>().attacking)
         {
             //make player go towards child's position
             transform.position = Vector3.MoveTowards(transform.position, movePoint.position, speed * Time.deltaTime);
-
 
             currentRunTime += Time.deltaTime;
 
