@@ -63,6 +63,7 @@ public class EnemyMovement : MonoBehaviour
                 {
                     //then player dies
                     GetComponent<DeathController>().KillEnemy();
+                    Destroy(gameObject, 2.5f);
                 }
             }
         }

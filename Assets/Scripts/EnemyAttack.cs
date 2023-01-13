@@ -18,11 +18,12 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentRunTime += Time.deltaTime;
 
-        if (currentRunTime >= delay)
+        if (!player.GetComponent<DeathController>().killed)
         {
-            if (!player.GetComponent<DeathController>().killed)
+            currentRunTime += Time.deltaTime;
+
+            if (currentRunTime >= delay)
             {
                 if (Vector3.Distance(transform.position, player.transform.position) <= 1f)
                 {
@@ -41,13 +42,14 @@ public class EnemyAttack : MonoBehaviour
                     attacking = false;
                     animator.SetBool("IsAttacking", false);
                 }
+                currentRunTime = 0f;
             }
-            else
-            {
-                attacking = false;
-                animator.SetBool("IsAttacking", false);
-            }
-            currentRunTime = 0f;
         }
+        else
+        {
+            attacking = false;
+            animator.SetBool("IsAttacking", false);
+        }
+
     }
 }
