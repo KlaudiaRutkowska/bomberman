@@ -10,7 +10,7 @@ public class PlayerGridMovement : MonoBehaviour
 	public LayerMask destructible, undestructible, bombs, explosion, enemies;
 	public Transform movePoint;
 
-	[SerializeField] private float speed = 1;
+	public float speed = 1;
 
 	// Start is called before the first frame update
 	void Start()

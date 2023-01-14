@@ -99,9 +99,8 @@ public class BombController : MonoBehaviour
 		//then stop destroying in that direction
 		if (Physics2D.OverlapBox(explosionPosition, Vector2.one / 2f, 0f, explosionLayerMask))
 		{
-			//Debug.Log(explosionPosition);
 			//fet rid of destructible tile map at current position 
-			DestroyDestructibleTileMap(explosionPosition);
+			StartCoroutine(DestroyDestructibleTileMap(explosionPosition));
 			return;
 		}
 
@@ -122,7 +121,7 @@ public class BombController : MonoBehaviour
 		Explode(explosionPosition, direction, length - 1);
 	}
 
-	private void DestroyDestructibleTileMap(Vector2 position)
+	private IEnumerator DestroyDestructibleTileMap(Vector2 position)
 	{
 		//get the cell from tilemap
 		//it's needed to be converted from world position to cell position
@@ -133,8 +132,9 @@ public class BombController : MonoBehaviour
         //if destructible tile map exists
         if (tile != null)
 		{
-			//then, get rid of it
-			destructibleTileMaps.SetTile(cell, null);
+            yield return new WaitForSeconds(explosionDuration);
+            //then, get rid of it
+            destructibleTileMaps.SetTile(cell, null);
 		}
 	}
 
