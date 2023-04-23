@@ -18,38 +18,28 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentRunTime += Time.deltaTime;
 
-        if (!player.GetComponent<DeathController>().killed)
+        if (currentRunTime >= delay)
         {
-            currentRunTime += Time.deltaTime;
-
-            if (currentRunTime >= delay)
+            if (Vector3.Distance(transform.position, player.transform.position) <= 1f)
             {
-                if (Vector3.Distance(transform.position, player.transform.position) <= 1f)
-                {
-                    attacking = true;
+                attacking = true;
 
-                    Vector2 direction = (player.transform.position - transform.position).normalized;
-                    animator.SetBool("IsAttacking", true);
-                    animator.SetFloat("Vertical", direction.y);
-                    animator.SetFloat("Horizontal", direction.x);
+                Vector2 direction = (player.transform.position - transform.position).normalized;
+                animator.SetBool("IsAttacking", true);
+                animator.SetFloat("Vertical", direction.y);
+                animator.SetFloat("Horizontal", direction.x);
 
-                    player.GetComponent<DeathController>().KillPlayer();
-                }
-
-                if (attacking && Vector3.Distance(transform.position, player.transform.position) > 1f)
-                {
-                    attacking = false;
-                    animator.SetBool("IsAttacking", false);
-                }
-                currentRunTime = 0f;
+                player.GetComponent<DeathController>().KillPlayer();
             }
-        }
-        else
-        {
-            attacking = false;
-            animator.SetBool("IsAttacking", false);
-        }
 
+            if (attacking && Vector3.Distance(transform.position, player.transform.position) > 1f)
+            {
+                attacking = false;
+                animator.SetBool("IsAttacking", false);
+            }
+            currentRunTime = 0f;
+        }
     }
 }

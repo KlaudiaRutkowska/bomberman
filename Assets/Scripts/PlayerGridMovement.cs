@@ -57,7 +57,7 @@ public class PlayerGridMovement : MonoBehaviour
 				}
 
 				//if horizontal inputs are put
-				if (math.abs(Input.GetAxisRaw("Horizontal")) == 1)
+				else if (math.abs(Input.GetAxisRaw("Horizontal")) == 1)
 				{
 					if (
 							!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0), .2f, destructible) &&
@@ -75,13 +75,13 @@ public class PlayerGridMovement : MonoBehaviour
 			//if distance between player position and move point position is grater or equal to zero
 			//equal because if we put the bomb and we stay in the place where will be explosion,
 			//there distance between player and move point  will be 0
-			//grater because ?
             if (Vector3.Distance(transform.position, movePoint.position) >= 0f)
             {
 				//if between player and explosion distance will be equal or less than 2f,
                 if (Physics2D.OverlapCircle(transform.position, .2f, explosion))
                 {
-					//then player dies
+                    //then player dies
+                    animator.SetBool("Dead", true);
                     GetComponent<DeathController>().KillPlayer();
                 }
             }

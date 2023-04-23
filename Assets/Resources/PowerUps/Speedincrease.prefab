@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6772118052539861150}
   - component: {fileID: 6772118052539861149}
   - component: {fileID: 6772118052539861148}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: Speedincrease
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6772118052539861150
 SpriteRenderer:
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 063ca806353e67e4db15ff30b00a58a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -98,10 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc6b2d6dabf82f649be7a7a4a05fb612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  itemPickup:
+  PowerUp:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 32768
   type: 2
 --- !u!61 &6772118052539861148
 BoxCollider2D:

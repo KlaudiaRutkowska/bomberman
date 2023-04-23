@@ -5,22 +5,27 @@ using UnityEngine.Tilemaps;
 
 public class ItemPickup : MonoBehaviour
 {
-    public GameObject player;
-    public LayerMask itemPickup;
-    public Tilemap destructibleTileMaps;
+    public LayerMask PowerUp;
+    private GameObject player;
 
+    
     public enum ItemType
     {
         ExtraBomb,
         BlastRadius,
         IncreaseSpeed,
     }
-
+    
     public ItemType type;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     void Update()
     {
-        if (Physics2D.OverlapCircle(player.transform.position, .2f, itemPickup))
+        if (Physics2D.OverlapCircle(player.transform.position, .2f, PowerUp))
         {
             switch (type)
             {
@@ -44,21 +49,19 @@ public class ItemPickup : MonoBehaviour
                     break;
             }
         }
-    }
-
-    private void GetDestructibleTileMap(Vector2 position)
-    {
-        //get the cell from tilemap
-        //it's needed to be converted from world position to cell position
-        Vector3Int cell = destructibleTileMaps.WorldToCell(position);
-        //get tile from the cell position
-        TileBase tile = destructibleTileMaps.GetTile(cell);
-
-        //if destructible tile map exists
-        if (tile != null)
+        /*
+        if (Physics2D.OverlapCircle(player.transform.position, .2f, PowerUp))
         {
-            //then, get rid of it
-            destructibleTileMaps.SetTile(cell, null);
+            Debug.Log("exposion");
+            player.GetComponent<BombController>().explosionSize++;
+            Destroy(gameObject);
         }
+
+        if (Physics2D.OverlapCircle(player.transform.position, .2f, PowerUp))
+        {
+            Debug.Log("speed");
+            player.GetComponent<PlayerGridMovement>().speed++;
+            Destroy(gameObject);
+        }*/
     }
 }

@@ -18,7 +18,6 @@ public class MenuController : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void StartGame()
@@ -35,7 +34,6 @@ public class MenuController : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quit");
         Application.Quit();
     }
 }

@@ -24,6 +24,7 @@ public class Explosion : MonoBehaviour
     {
         //atan2 function returnsangle in radians
         float angle = Mathf.Atan2(direction.y, direction.x);
+        //Debug.Log(direction.x + " " + direction.y + " " + angle + " " + angle * Mathf.Rad2Deg);
         //calculate rotation and rotate in z axis
         //angleAxis functions requires angle in degrees so it must be changed by * rad2deg
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);

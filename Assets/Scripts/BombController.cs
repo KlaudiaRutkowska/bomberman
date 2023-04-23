@@ -16,7 +16,7 @@ public class BombController : MonoBehaviour
 
 	[Header("Explosion")]
 	public Explosion explosionPrefab;
-	public LayerMask explosionLayerMask;
+	public LayerMask collisionLayerMask;
 	public float explosionDuration = .5f;
 	public int explosionSize = 1;
 
@@ -97,9 +97,9 @@ public class BombController : MonoBehaviour
 
 		//if explosion position overlaps undestructible layer mask
 		//then stop destroying in that direction
-		if (Physics2D.OverlapBox(explosionPosition, Vector2.one / 2f, 0f, explosionLayerMask))
+		if (Physics2D.OverlapBox(explosionPosition, Vector2.one / 2f, 0f, collisionLayerMask))
 		{
-			//fet rid of destructible tile map at current position 
+			//get rid of destructible tile map at current position 
 			StartCoroutine(DestroyDestructibleTileMap(explosionPosition));
 			return;
 		}

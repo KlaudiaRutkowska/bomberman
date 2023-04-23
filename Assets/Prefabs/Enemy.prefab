@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 506444739068790621}
   - component: {fileID: 506444739068790620}
   - component: {fileID: 506444739068790623}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ Transform:
   m_Children:
   - {fileID: 506444739227864725}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &506444739068790619
 SpriteRenderer:
@@ -124,7 +124,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3c9c25541f6d49b43936f7eab25d1f02, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -173,8 +173,10 @@ MonoBehaviour:
   player:
     serializedVersion: 2
     m_Bits: 1024
+  position: {x: 0, y: 0, z: 0}
   speed: 1
-  delay: 1
+  delay: 2
+  currentRunTime: 0
 --- !u!61 &506444739068790620
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -227,7 +229,7 @@ GameObject:
   - component: {fileID: 506444739227864725}
   - component: {fileID: 506444739227864727}
   - component: {fileID: 506444739227864724}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Move Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
